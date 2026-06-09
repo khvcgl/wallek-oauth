@@ -1,0 +1,52 @@
+<!--
+  WalleK — Supabase Auth "Confirm signup" e-posta şablonu (S242, Emrah: içerikli + login yönlendirmeli).
+  Değişkenler: {{ .ConfirmationURL }} (doğrula linki) · {{ .Email }} · {{ .SiteURL }}.
+  Uygula: Dashboard → Authentication → Emails → Templates → Confirm signup → bu HTML'i yapıştır.
+  (veya management API: PATCH /v1/projects/{ref}/config/auth  body: mailer_templates_confirmation_content)
+-->
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#faf6ef;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#faf6ef;padding:32px 16px;">
+    <tr><td align="center">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:460px;background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #ece4d6;">
+        <!-- Header -->
+        <tr><td style="background:#006e28;padding:28px 24px;text-align:center;">
+          <div style="font-size:26px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">WalleK</div>
+          <div style="font-size:13px;color:#cfe9d5;margin-top:4px;">Kişisel Finans</div>
+        </td></tr>
+        <!-- Body -->
+        <tr><td style="padding:32px 28px 8px;">
+          <div style="font-size:22px;font-weight:800;color:#1a1a1a;text-align:center;">🎉 Hoş geldin!</div>
+          <p style="font-size:15px;line-height:1.6;color:#444;text-align:center;margin:14px 0 0;">
+            WalleK hesabın <b>başarıyla oluşturuldu</b>. Son bir adım kaldı — e-posta adresini doğrula, sonra uygulamadan giriş yap.
+          </p>
+        </td></tr>
+        <!-- CTA -->
+        <tr><td style="padding:24px 28px 8px;text-align:center;">
+          <a href="{{ .ConfirmationURL }}" style="display:inline-block;background:#006e28;color:#ffffff;font-size:16px;font-weight:700;text-decoration:none;padding:15px 38px;border-radius:12px;">
+            Hesabımı Doğrula
+          </a>
+        </td></tr>
+        <tr><td style="padding:8px 28px 24px;">
+          <p style="font-size:13px;line-height:1.6;color:#777;text-align:center;margin:8px 0 0;">
+            Doğruladıktan sonra <b>WalleK uygulamasına</b> dönüp e-posta ve şifrenle giriş yapabilirsin.
+          </p>
+          <p style="font-size:12px;line-height:1.5;color:#999;text-align:center;margin:16px 0 0;word-break:break-all;">
+            Buton çalışmazsa bu bağlantıyı tarayıcına kopyala:<br>
+            <a href="{{ .ConfirmationURL }}" style="color:#006e28;">{{ .ConfirmationURL }}</a>
+          </p>
+        </td></tr>
+        <!-- Footer -->
+        <tr><td style="background:#faf6ef;padding:18px 24px;text-align:center;border-top:1px solid #ece4d6;">
+          <p style="font-size:11px;color:#aaa;margin:0;line-height:1.5;">
+            Bu e-posta {{ .Email }} için gönderildi. Hesap oluşturmadıysan bu mesajı yok say.<br>
+            © WalleK · EK Software
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>
